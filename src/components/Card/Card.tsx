@@ -5,10 +5,10 @@ import DotSingle from '@expo/vector-icons/Entypo';
 import CreditCard from '@expo/vector-icons/FontAwesome';
 import { ICard } from './types';
 
-export function Card({ index, number_card, balance, flag }: ICard) {
+export function Card({ id, number_card, balance, flag }: ICard) {
   return (
     <LinearGradient
-      key={index}
+      key={id}
       style={S.styles.wrapperCard}
       colors={['#5165ff', '#7070ff']}
       start={{ x: 0.5, y: 0 }}
