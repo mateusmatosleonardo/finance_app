@@ -20,10 +20,10 @@ export function Transactions({
           <S.Date>{transaction_date}</S.Date>
         </S.WrapperTransactions>
       </S.Wrapper>
-      <S.TransactionNumber
+      <S.TransactionAmount
         style={{ color: transaction_status ? '#5783e0' : '#af6ae4' }}>
         {transaction_status ? '+ ' : '- '}${transaction_amount}
-      </S.TransactionNumber>
+      </S.TransactionAmount>
     </S.Container>
   );
 }
