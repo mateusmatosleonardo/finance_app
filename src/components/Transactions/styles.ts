@@ -49,7 +49,7 @@ export const Date = styled.Text`
   color: #d8d8e8;
 `;
 
-export const TransactionNumber = styled.Text`
+export const TransactionAmount = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Montserrat_Bold};
   font-size: ${RFValue(18)}px;
   color: #d8d8e8;
