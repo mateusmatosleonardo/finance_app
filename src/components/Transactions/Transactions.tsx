@@ -13,7 +13,7 @@ export function Transactions({
     <S.Container key={id}>
       <S.Wrapper>
         <S.WrapperSymbol>
-          <S.Symbol>{transaction_name.substring(0, 1)}</S.Symbol>
+          <S.Symbol>{transaction_name?.substring(0, 1)}</S.Symbol>
         </S.WrapperSymbol>
         <S.WrapperTransactions>
           <S.TransactionsName>{transaction_name}</S.TransactionsName>
