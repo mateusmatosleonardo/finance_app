@@ -51,6 +51,6 @@ export const Date = styled.Text`
 
 export const TransactionAmount = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Montserrat_Bold};
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(17)}px;
   color: #d8d8e8;
 `;
