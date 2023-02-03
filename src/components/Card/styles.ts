@@ -1,13 +1,9 @@
 import styled from 'styled-components/native';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-export const WrapperCard = styled.View`
-  width: 100%;
-  height: 185px;
-  border-radius: 18px;
-  background-color: red;
-`;
+const SLIDER_WIDTH = Dimensions.get('window').width;
+const CARD_LENGTH = SLIDER_WIDTH * 0.88;
 
 export const WrapperCardNumber = styled.Text`
   flex-direction: row;
@@ -50,7 +46,7 @@ export const Balance = styled.Text`
 export const styles = StyleSheet.create({
   wrapperCard: {
     justifyContent: 'space-between',
-    width: '100%',
+    width: CARD_LENGTH,
     height: 170,
     borderRadius: 18,
     padding: 20,
