@@ -1,10 +1,11 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface IButton {
-  colors: string[];
-  color_icon: string;
-  size_icon: number;
-  icon: any;
-  style: StyleProp<ViewStyle>;
   title?: string;
+  icon: any;
+  size_icon: number;
+  color_icon: string;
+  color_is_linear: boolean;
+  colors?: string[] | any;
+  style: StyleProp<ViewStyle>;
 }
