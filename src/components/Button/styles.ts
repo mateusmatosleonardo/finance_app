@@ -7,3 +7,5 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.WHITE};
   letter-spacing: 1px;
 `;
+
+export const Button = styled.Pressable``;
