@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import { ICard } from './types';
 import * as S from './styles';
 import DotSingle from '@expo/vector-icons/Entypo';
@@ -10,24 +9,20 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle
 } from 'react-native-reanimated';
-
-const SLIDER_WIDTH = Dimensions.get('window').width;
-const SPACING = SLIDER_WIDTH * 0.02;
-const SIDECARD_LENGHT = (SLIDER_WIDTH * 0.12) / 2;
-const CARD_LENGTH = SLIDER_WIDTH * 0.88;
+import { MEASUREMENTS } from '../../utils/measurements';
 
 export function Card({ index, number_card, balance, flag, scrollX }: ICard) {
 
   const size = useSharedValue(0.8);
 
   const inputRange = [
-    (index - 1) * CARD_LENGTH,
-    index * CARD_LENGTH,
-    (index + 1) * CARD_LENGTH
+    (index - 1) * MEASUREMENTS.CARD_LENGTH,
+    index * MEASUREMENTS.CARD_LENGTH,
+    (index + 1) * MEASUREMENTS.CARD_LENGTH
   ];
 
   size.value = interpolate(
-    //@ts-ignore
+    // @ts-ignore
     scrollX,
     inputRange,
     [0.8, 1, 0.8],
@@ -44,8 +39,8 @@ export function Card({ index, number_card, balance, flag, scrollX }: ICard) {
     <Animated.View
       key={index}
       style={[S.styles.wrapperCard, cardStyle, {
-        marginLeft: index === 0 ? SIDECARD_LENGHT : SPACING,
-        marginRight: index === 2 ? SIDECARD_LENGHT : SPACING,
+        marginLeft: index === 0 ? MEASUREMENTS.SIDECARD_LENGHT : MEASUREMENTS.SPACING,
+        marginRight: index === 2 ? MEASUREMENTS.SIDECARD_LENGHT : MEASUREMENTS.SPACING,
         backgroundColor: index === 0 ? '#7070ff' : index === 1 ? '#3175e6' : '#99bfe7'
       }]}
     >
