@@ -1,20 +1,17 @@
-import React, { useCallback, useState } from 'react';
-import { FlatList, Dimensions, ListRenderItemInfo } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, ListRenderItemInfo } from 'react-native';
 import Animated, { } from 'react-native-reanimated';
 import * as S from './styles';
 import { Header } from '../../components/Header/Header';
 import { Card } from '../../components/Card/Card';
 import { ICard } from '../../components/Card/types';
 import { Button } from '../../components/Button/Button';
-import SearchIcon from '@expo/vector-icons/Feather';
 import { Transactions } from '../../components/Transactions/Transactions';
 import { ITransactions } from '../../components/Transactions/types';
+import { MEASUREMENTS } from '../../utils/measurements';
+import SearchIcon from '@expo/vector-icons/Feather';
 
-const SLIDER_WIDTH = Dimensions.get('window').width;
-const SPACING = SLIDER_WIDTH * 0.02;
-const CARD_LENGTH = SLIDER_WIDTH * 0.88;
-
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<ICard>);
 
 export function Home() {
 
@@ -27,7 +24,7 @@ export function Home() {
       balance: '6,000',
       flag: 'cc-mastercard',
       transactions: [{
-        id: 1,
+        id: 0,
         transaction_name: 'Gasolina',
         transaction_amount: '50.00',
         transaction_status: false,
@@ -40,11 +37,11 @@ export function Home() {
       balance: '2,500',
       flag: 'cc-visa',
       transactions: [{
-        id: 1,
-        transaction_name: 'Roupa',
-        transaction_amount: '140.00',
-        transaction_status: false,
-        transaction_date: '20 Jul, 3:16 PM'
+        id: 0,
+        transaction_amount: '100.00',
+        transaction_name: 'Crédito',
+        transaction_status: true,
+        transaction_date: '20 Jul, 3:16 PM',
       }],
     },
     {
@@ -53,12 +50,12 @@ export function Home() {
       balance: '2,000',
       flag: 'cc-paypal',
       transactions: [{
-        id: 1,
-        transaction_name: 'Roupa',
-        transaction_amount: '140.00',
+        id: 0,
+        transaction_amount: '15.80',
+        transaction_name: 'Sorveteria',
         transaction_status: false,
-        transaction_date: '20 Jul, 3:16 PM'
-      }],
+        transaction_date: '20 Jul, 3:16 PM',
+      },],
     }
   ]);
 
@@ -115,19 +112,16 @@ export function Home() {
       <S.Title>Meus Cartões</S.Title>
       <Animated.View>
         <AnimatedFlatList
-          // snapToAlignment={'center'}
           scrollEventThrottle={16}
           decelerationRate={0.8}
-          snapToInterval={CARD_LENGTH + (SPACING * 2)}
+          snapToInterval={MEASUREMENTS.CARD_LENGTH + (MEASUREMENTS.SPACING * 2)}
           disableIntervalMomentum={true}
           disableScrollViewPanResponder={true}
-          data={carouselItems}
-          // @ts-ignore
-          renderItem={renderItem}
-          // @ts-ignore
-          keyExtractor={item => String(item.index)}
           horizontal
           showsHorizontalScrollIndicator={false}
+          data={carouselItems}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.index)}
           onScroll={(event) => {
             setScrollX(event.nativeEvent.contentOffset.x);
           }}
